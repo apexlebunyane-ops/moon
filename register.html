@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Create Account</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Create Account</button>
+    <p><a href="login.html">Back to Login</a></p>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    
+    <script>
+        // SAME FIREBASE CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNOG8M0KDgD_4PTohi7vmhvdI_8XnCk0Q",
+            authDomain: "myplatform-b0b45.firebaseapp.com",
+            projectId: "myplatform-b0b45",
+            storageBucket: "myplatform-b0b45.firebasestorage.app",
+            messagingSenderId: "225080454891",
+            appId: "1:225080454891:web:52eea759ec3dfe78e498ae"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        function register() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    alert("Account created!");
+                    window.location.href = "login.html";
+                })
+                .catch(() => {
+                    alert("Error creating account!");
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard!</h1>
+    <p>You are logged in and can use this on any device!</p>
+    <button onclick="logout()">Logout</button>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    
+    <script>
+        // SAME FIREBASE CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNOG8M0KDgD_4PTohi7vmhvdI_8XnCk0Q",
+            authDomain: "myplatform-b0b45.firebaseapp.com",
+            projectId: "myplatform-b0b45",
+            storageBucket: "myplatform-b0b45.firebasestorage.app",
+            messagingSenderId: "225080454891",
+            appId: "1:225080454891:web:52eea759ec3dfe78e498ae"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        function logout() {
+            firebase.auth().signOut();
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

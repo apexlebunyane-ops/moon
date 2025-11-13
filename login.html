@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p><a href="register.html">Create Account</a></p>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    
+    <script>
+        // YOUR FIREBASE CONFIG - REPLACE WITH YOUR ACTUAL CODE
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNOG8M0KDgD_4PTohi7vmhvdI_8XnCk0Q",
+            authDomain: "myplatform-b0b45.firebaseapp.com",
+            projectId: "myplatform-b0b45",
+            storageBucket: "myplatform-b0b45.firebasestorage.app",
+            messagingSenderId: "225080454891",
+            appId: "1:225080454891:web:52eea759ec3dfe78e498ae"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    alert("Login success!");
+                    window.location.href = "dashboard.html";
+                })
+                .catch(() => {
+                    alert("Login failed!");
+                });
+        }
+    </script>
+</body>
+</html>
